@@ -1,0 +1,7 @@
+{
+  "name": "DecodificarChecoutMobileApi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,33 @@
+/* .mat-dialog-actions {
+    // <div mat-dialog-actions align="center"> 
+    &[align='end'] {
+      justify-content: flex-end;
+    }
+  
+    &[align='center'] {
+      justify-content: center;
+      
+
+    }
+
+    &[align='full-width'] {
+        justify-content: full-width;
+      }
+  } */
+
+.ajuste-center-page{    
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-width{
+    width: 90%;    
+    background-color:white;
+}
+
+.color-page{
+    --ion-background-color: rgb(241, 241, 241);
+}
+
+

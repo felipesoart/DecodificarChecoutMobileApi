@@ -1,0 +1,91 @@
+<div class="mat-elevation-z8 data-table">
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de servico deixa fix com o sticky-->
+    <ng-container matColumnDef="servico">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Servico </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.servico}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de posição -->
+    <ng-container matColumnDef="periodo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Período </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.periodo}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de peso -->
+    <ng-container matColumnDef="parcela">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Parcela </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.parcela}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de símbolos -->
+    <ng-container matColumnDef="vencimento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Vencimento </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.vencimento}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de símbolos -->
+    <ng-container matColumnDef="startus">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Startus </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.startus}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de símbolos -->
+    <ng-container matColumnDef="original">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Original </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.original}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de símbolos -->
+    <ng-container matColumnDef="desconto">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Desconto </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.desconto}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de símbolos -->
+    <ng-container matColumnDef="multas">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Multas </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.multas}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de símbolos -->
+    <ng-container matColumnDef="juros">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Juros </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.juros}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna de símbolos -->
+    <ng-container matColumnDef="liquido">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Líquido </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.liquido}} </mat-cell>
+    </ng-container>
+
+    <!-- Estrela Coluna - stickyEnd-->
+    <!-- <ng-container matColumnDef="pagamento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        colocar o linck de pagamento e o de boleto som sua respectiva foto <mat-icon>more_vert</mat-icon>
+      </mat-cell>
+    </ng-container> -->
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+   [length]="dataSource.data.length" 
+   [pageIndex]="0" 
+   [pageSize]="50"
+   [pageSizeOptions]="[1, 25, 50, 100, 250]">
+  </mat-paginator>
+
+  <!--  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+
+</div>

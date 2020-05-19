@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title>Acesso Checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="color-page">
+
+  <section class="ajuste-center-page">
+
+    <ion-card class="card-width">
+      <ion-card-header>
+
+        <ion-item color="whith">
+          <ion-label color="medium" position="floating">Usuário</ion-label>
+          <ion-input type="text" [(ngModel)]="login"></ion-input>
+        </ion-item>
+
+        <ion-item color="whith">
+          <ion-label color="medium" position="floating">Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="senha"></ion-input>
+        </ion-item>
+
+
+      </ion-card-header>
+
+      <section>
+        <ion-button expand="block" padding color="success" (click)="btlogin()">Logar</ion-button>
+      </section>
+    </ion-card>
+
+  </section>
+</ion-content>
