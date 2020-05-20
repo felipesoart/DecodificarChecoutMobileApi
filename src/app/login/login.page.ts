@@ -15,15 +15,30 @@ export class LoginPage implements OnInit {
   login: string;
   senha: string;
 
+  
+
   constructor(
     private router: Router,
     private provider: PostProvider,
     private storage: NativeStorage,
-    public toast: ToastController
+    public toast: ToastController,
   ) { }
+
+  /* loginRa(){
+    this.provider.push('home', {
+      data: this.login,
+    });
+  } */
+
+  /* loginRa(login){
+    this.router.navigate(['/home/' + login])
+  } */
 
   ngOnInit() {
   }
+
+
+
   async btlogin() {
 
     
@@ -70,7 +85,7 @@ export class LoginPage implements OnInit {
     this.provider.Api(dados, 'api/Autenticacao').subscribe(async data => {
       var alert = data['MessageResponse'];
       if (data['StatusResponse'] == 1) {
-        this.storage.setItem('session_storage', data['_response']);
+        this.storage.setItem('session_storage', data['Response']);
         this.router.navigate(['/home']);
         const toast = await this.toast.create({
            message: 'Bem vindo!',

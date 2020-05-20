@@ -1,10 +1,11 @@
 import { LoginPageModule } from './../login/login.module';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PostProvider } from 'src/providers/post-provider';
 
 import { IonInfiniteScroll, ToastController } from '@ionic/angular';
-import { LoginPage } from '../login/login.page';
+
+
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,11 @@ export class HomePage {
   start: number = 0;
   Servico: string = "";
   Parcela: string = "";
-  DataVencimento: string = "";/* 
+  DataVencimento: string = "";
+  /* 
+  login: string = "";
+  
+  
   CodColigada: number=1;
   @ViewChild(LoginPage) ra: number=login;
   /* Status: string=""; 
@@ -34,6 +39,7 @@ export class HomePage {
     private router: Router,
     private provider: PostProvider,
     public ToastController: ToastController,
+    
   ) {
 
   }
@@ -48,6 +54,8 @@ export class HomePage {
     this.carregar();
   }
 
+
+
   //Refresh
   /*   doRefresh(event) {
   
@@ -57,6 +65,8 @@ export class HomePage {
       }, 500);
     }
    */
+
+
   //barra de rolagem (verificar depois esse erro no php carregar)
   loadData(event) {
 
@@ -70,8 +80,6 @@ export class HomePage {
 
     }, 500);
   }
-
-
 
 
   async mensagemErro() {
@@ -112,32 +120,9 @@ export class HomePage {
         
       });
 
-      /* this.http.get(this.url).toPromise().then(data=> {
-        console.log(data);
-        
-        for (let _response in data){
-            if (data.hasOwnProperty('_response'))
-                this.listas.push(data['_response']);
-                
-        }
-        
-    }); */
-
     });
 
   }
-
-  /*  this.provider.extratoApi('api/ExtratoFinanceiro/GetExtratoFinanceiroAluno/1/716396').toPromise().then(data=> {
-              console.log(data);
-              
-              for (let extrato of data['_response']){
-                  if (data.hasOwnProperty(key))
-                      this.listas.push(extrato);
-                      err => console.log(err)
-              }
-              resolve(true);
-          });  */
-
 
   /* excluir(id){
     let dados = {

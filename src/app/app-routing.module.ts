@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'mostrar-extrato',
     loadChildren: () => import('./mostrar-extrato/mostrar-extrato.module').then( m => m.MostrarExtratoPageModule)
   },
-  /* {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule) }, */
+  
   {path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   {path: 'home', loadChildren: './home/home.module#HomePageModule' },
   {path: 'mostrar-extrato/:CodColigada/:CodFilial/:IdLan/:IdBoleto/:Servico/:Parcela/:Status/:ValorLiquido/:DataVencimento', loadChildren: './mostrar-extrato/mostrar-extrato.module#MostrarExtratoPageModule' },
