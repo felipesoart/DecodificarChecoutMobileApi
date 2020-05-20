@@ -4,7 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { HomePageRoutingModule } from './home-routing.module';/* 
+import { PostProvider } from 'src/providers/post-provider'; */
 /* import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -17,6 +18,7 @@ import { DataTableComponent } from 'src/app//data-table/data-table.component';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+   /*  PostProvider, */
     /* MatTableModule,
     MatPaginatorModule,
     MatSortModule, */

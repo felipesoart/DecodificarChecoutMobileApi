@@ -1,3 +1,4 @@
+import { DataService } from './../../providers/service-data';
 import { ToastController } from '@ionic/angular';
 import { PostProvider } from 'src/providers/post-provider';
 import { Router } from '@angular/router';
@@ -22,6 +23,7 @@ export class LoginPage implements OnInit {
     private provider: PostProvider,
     private storage: NativeStorage,
     public toast: ToastController,
+    private dataService: DataService,
   ) { }
 
   /* loginRa(){
@@ -86,6 +88,8 @@ export class LoginPage implements OnInit {
       var alert = data['MessageResponse'];
       if (data['StatusResponse'] == 1) {
         this.storage.setItem('session_storage', data['Response']);
+        console.log(data['Response']);
+        this.dataService.setData('home', {login: this.login});
         this.router.navigate(['/home']);
         const toast = await this.toast.create({
            message: 'Bem vindo!',

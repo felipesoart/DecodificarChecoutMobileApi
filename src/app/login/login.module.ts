@@ -6,14 +6,16 @@ import { IonicModule } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
 
-import { LoginPage } from './login.page';
+import { LoginPage } from './login.page';/* 
+import { PostProvider } from 'src/providers/post-provider'; */
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    /* PostProvider, */
   ],
   declarations: [LoginPage]
 })

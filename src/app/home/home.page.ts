@@ -1,9 +1,12 @@
+import { LoginPage } from './../login/login.page';
 import { LoginPageModule } from './../login/login.module';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostProvider } from 'src/providers/post-provider';
 
 import { IonInfiniteScroll, ToastController } from '@ionic/angular';
+import { DataService } from 'src/providers/service-data';
+/* import { LoginPage } from '../login/login.page'; */
 
 
 
@@ -24,6 +27,7 @@ export class HomePage {
   Servico: string = "";
   Parcela: string = "";
   DataVencimento: string = "";
+  codColigada: number = 1;
   /* 
   login: string = "";
   
@@ -39,13 +43,18 @@ export class HomePage {
     private router: Router,
     private provider: PostProvider,
     public ToastController: ToastController,
-    
-  ) {
+    private dataService: DataService,
+    /* private loginService: LoginPage */
+  ) { }
 
-  }
+/*    get raLogin() {
+    // usando o UsuarioProvider
+    return this.LoginPage.login;
+  }  */
 
   ngOnInit() {
     this.carregar();
+    
   }
 
   ionViewCanEnter() {
@@ -108,8 +117,11 @@ export class HomePage {
   }
 
   carregar() {
+    
+    let raLogin: String = this.dataService.getData()["login"];
+    
     return new Promise(resolve => {
-      this.provider.ApiGet('api/ExtratoFinanceiro/GetExtratoFinanceiroAluno/1/716396')
+      this.provider.ApiGet(`api/ExtratoFinanceiro/GetExtratoFinanceiroAluno/1/${raLogin}`)
       .subscribe(data => {
         console.log(data);
         for (let extrato of data['Response']['Itens']) {
