@@ -8,7 +8,7 @@
 
 <ion-header>
   <ion-toolbar color="medium">
-    <ion-title>Extrato</ion-title>
+    <ion-title>Extrato Financiro</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -40,6 +40,7 @@
       refreshingText="Carregando...">
     </ion-refresher-content>
   </ion-refresher> -->
+  
 
   <ion-list>
     <!-- Sliding item with text options on both sides -->
@@ -48,9 +49,10 @@
         <ion-item-option (click)="editar(cliente.id, cliente.nome, cliente.telefone, cliente.email)">Editar</ion-item-option>
         
       </ion-item-options> -->
-  
+
       <ion-item>
-        <ion-label><h2>{{extrato.Servico}}</h2> <h2><small><span class="red">R$ {{extrato.ValorLiquido}}</span> - {{extrato.DataVencimento}}</small></h2></ion-label>
+        <ion-label><h2>{{extrato.Servico}}</h2> <h2><small><span class="red">R$ {{extrato.ValorLiquido}}</span> 
+        - {{extrato.DataVencimento | date:"dd/MM/yyyy"}}</small></h2></ion-label>
       </ion-item>
    
       <ion-item-options side="end">
