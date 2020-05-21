@@ -4,34 +4,57 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- dedalhes do pagamento -->
 <ion-content class="color-page">
   <ion-card class="card-white">
     <ion-card-header>
-      <ion-card-subtitle>Detales Extrato:</ion-card-subtitle>
+      <ion-card-subtitle><b>Pagamento:</b></ion-card-subtitle>
       <ion-card-title>{{servico}}</ion-card-title>
     </ion-card-header>
   
     <ion-card-content >
-      Coligada: {{codColigada}} <br>
-      Filial: {{codFilial}} <br>
-      Ref. Lançamento: {{idLan}}<br>
+      <!-- Coligada: {{codColigada}} <br>
+      Filial: {{codFilial}} <br> -->
+      <!-- Ref. Lançamento: {{idLan}}<br> -->
       <!-- Boleto: {{idBoleto}}<br> -->
       Parcela: {{parcela}}<br>
-      Status: {{status}}<br>
-      Valor Liquido: {{valorLiquido}}<br>
-      Data Vencimento: {{dataVencimento  | date:"dd/MM/yyyy"}}<br>
+      <!-- Status: {{status}}<br> -->
+      Liquido (R$): {{valorLiquido}}<br>
+      Vencimento: {{dataVencimento  | date:"dd/MM/yyyy"}}<br>
     </ion-card-content>
   </ion-card>
 
-  <section class="ajuste-center-page">
-    <ion-button class= "ion-text-capitalize" color="success" (click)="btPagamento()">Pagar
-      <ion-icon slot= "end" name="cash-outline"></ion-icon>
-    </ion-button>
+<!-- forma de pagamento -->
+  <ion-card class="card-white">
+    <ion-card-header class="card-white">
+    
+      <ion-card-subtitle><b>Opções de Pagamento:</b></ion-card-subtitle>
+    <ion-list color="white">
+     
+      <ion-item color="white">
+        <ion-label position="floating">Nome impresso na frente do cartão: </ion-label>
+        <ion-input type="text"></ion-input><!-- [(ngModel)]="login" -->  
+      </ion-item>
 
-    <ion-button class= "ion-text-capitalize" color="success" (click)="btBoleto()">Gerar Boleto
-      <ion-icon slot= "end" name="barcode-outline"></ion-icon>
-    </ion-button>
-  </section>
+
+     
+
+
+    </ion-list> 
+
+  </ion-card-header>
+
+    <section class="ajuste-center-page">
+      <ion-button class= "ion-text-capitalize" color="success" (click)="btPagamento()">Pagar
+        <ion-icon slot= "end" name="cash-outline"></ion-icon>
+      </ion-button>
+  
+      <ion-button class= "ion-text-capitalize" color="success" (click)="btBoleto()">Gerar Boleto
+        <ion-icon slot= "end" name="barcode-outline"></ion-icon>
+      </ion-button>
+    </section>
+
+  </ion-card>
 
 
 </ion-content>
