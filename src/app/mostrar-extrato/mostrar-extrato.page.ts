@@ -12,15 +12,15 @@ import { ToastController } from '@ionic/angular';
 export class MostrarExtratoPage implements OnInit {
 
  
-  CodColigada: number;
-  CodFilial: number;
-  IdLan: number;
-  IdBoleto: number;
-  Servico: string="";
-  Parcela: string="";
-  Status: string=""; 
-  ValorLiquido: number; 
-  DataVencimento: string="";
+  codColigada: number;
+  codFilial: number;
+  idLan: number;
+  idBoleto: number;
+  servico: string="";
+  parcela: string="";
+  status: string=""; 
+  valorLiquido: number; 
+  dataVencimento: string="";
   
 
   constructor(
@@ -32,17 +32,24 @@ export class MostrarExtratoPage implements OnInit {
 
   ngOnInit() {
     this.actRoute.params.subscribe((data: any)=>{
-      this.CodColigada = data.CodColigada;
-      this.CodFilial = data.CodFilial;
-      this.IdLan = data.IdLan;
-      this.IdBoleto = data.IdBoleto;
-      this.Servico = data.Servico;
-      this.Parcela = data.Parcela;
-      this.Status = data.Status;
-      this.ValorLiquido = data.ValorLiquido;
-      this.DataVencimento = data.DataVencimento;
+      this.codColigada = data.CodColigada;
+      this.codFilial = data.CodFilial;
+      this.idLan = data.IdLan;
+      this.idBoleto = data.IdBoleto;
+      this.servico = data.Servico;
+      this.parcela = data.Parcela;
+      this.status = data.Status;
+      this.valorLiquido = data.ValorLiquido;
+      this.dataVencimento = data.DataVencimento;
       console.log(data);
     });
   }
 
+  btPagamento(){
+    this.router.navigate(['/pagamento'])
+  }
+
+  btBoleto(){
+    
+  }
 }

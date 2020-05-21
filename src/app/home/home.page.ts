@@ -108,9 +108,6 @@ export class HomePage {
       this.router.navigate(['/add-cliente/' + id + '/' + nome + '/' + telefone + '/' + email]);
     } */
 
-  /* mostrar(id, nome, telefone, email){
-      this.router.navigate(['/mostrar-cliente/' + id + '/' + nome + '/' + telefone + '/' + email]);
-    } */
 
   mostrar(CodColigada, CodFilial, IdLan, IdBoleto, Servico, Parcela, Status, ValorLiquido, DataVencimento) {
     this.router.navigate(['/mostrar-extrato/' + CodColigada + '/' + CodFilial + '/' + IdLan + '/' + IdBoleto + '/' + Servico + '/' + Parcela + '/' + Status + '/' + ValorLiquido + '/' + DataVencimento]);

@@ -26,16 +26,6 @@ export class LoginPage implements OnInit {
     private dataService: DataService,
   ) { }
 
-  /* loginRa(){
-    this.provider.push('home', {
-      data: this.login,
-    });
-  } */
-
-  /* loginRa(login){
-    this.router.navigate(['/home/' + login])
-  } */
-
   ngOnInit() {
   }
 
