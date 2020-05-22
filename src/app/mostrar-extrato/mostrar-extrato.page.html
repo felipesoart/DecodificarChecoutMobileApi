@@ -8,7 +8,7 @@
 <ion-content class="color-page">
   <ion-card class="card-white">
     <ion-card-header>
-      <ion-card-subtitle><b>Pagamento:</b></ion-card-subtitle>
+      <ion-card-title>Pagamento:</ion-card-title>
       <ion-card-title>{{servico}}</ion-card-title>
     </ion-card-header>
   
@@ -26,20 +26,51 @@
 
 <!-- forma de pagamento -->
   <ion-card class="card-white">
-    <ion-card-header class="card-white">
-    
-      <ion-card-subtitle><b>Opções de Pagamento:</b></ion-card-subtitle>
-    <ion-list color="white">
+    <ion-card-header>
+      <ion-card-title>Opções de Pagamento:</ion-card-title>
+      
+    <ion-list>
      
-      <ion-item color="white">
-        <ion-label position="floating">Nome impresso na frente do cartão: </ion-label>
-        <ion-input type="text"></ion-input><!-- [(ngModel)]="login" -->  
+      <ion-item>
+        <ion-card-subtitle color= "dark"><b>Nome de quem está efetuando o pagamento (Nome do Comprador):</b><br><br>João Paulo<!-- {{v.nome}} --></ion-card-subtitle>
+      </ion-item> 
+       
+      <ion-item>
+        <ion-card-subtitle color= "dark"><br><b>Nome impresso na frente do cartão:</b></ion-card-subtitle>
+        <ion-label position="stacked"></ion-label>
+        <ion-input type="text" placeholder="Conforme está impresso no cartão"></ion-input><!-- [(ngModel)]="login" -->  
+      </ion-item>
+      
+      <ion-item>
+        <ion-card-subtitle color= "dark"><br><b>Parcelas:</b></ion-card-subtitle>
+        <ion-label position="stacked"></ion-label>
+        <ion-input type="text" placeholder="1"></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-card-subtitle color= "dark"><br><b>Validade:</b></ion-card-subtitle>
+        <ion-label position="stacked"></ion-label>
+        <ion-input type="text" placeholder="99/9999"></ion-input>
+      </ion-item>
 
-     
+      <ion-item>
+        <ion-card-subtitle color= "dark"><br><b>Número de Cartão:</b></ion-card-subtitle>
+        <ion-label position="stacked"></ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-card-subtitle color= "dark"><br><b>Cód. Segurança:</b></ion-card-subtitle>
+        <ion-label position="stacked"></ion-label>
+        <ion-input type="text" placeholder="999"></ion-input>
+      </ion-item>   
 
+      <ion-item>
+        <ion-checkbox slot="start" checked></ion-checkbox>
+        <ion-label>Checkbox</ion-label>
+      </ion-item>
+<!-- ajusta os Meio de Pagamento
+Bandeira para select itens -->
     </ion-list> 
 
   </ion-card-header>
