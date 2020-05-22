@@ -56,10 +56,17 @@
       </ion-item>
    
       <ion-item-options side="end">
-        <ion-item-option color="secondary" (click)="mostrar(extrato.CodColigada, extrato.CodFilial,
-        extrato.IdLan, extrato.IdBoleto, extrato.Servico, extrato.Parcela, extrato.Status,
-        extrato.ValorLiquido, extrato.DataVencimento)">
-        Detales</ion-item-option>
+        <ion-item-option class= "ion-text-capitalize" color="success" (click)="pagarmento(extrato.CodColigada, extrato.CodFilial,
+          extrato.IdLan, extrato.IdBoleto, extrato.Servico, extrato.Parcela, extrato.Status,
+          extrato.ValorLiquido, extrato.DataVencimento)">
+          Pagar
+          <ion-icon slot= "end" name="cash-outline"></ion-icon>
+        </ion-item-option>
+
+       <ion-item-option class= "ion-text-capitalize" (click)="geraBoleto()">
+          Boleto 
+          <ion-icon slot= "end" name="barcode-outline"></ion-icon>
+        </ion-item-option>
         <!-- <ion-item-option color="danger" (click)="excluir(cliente.id)">Excluir</ion-item-option> -->
       </ion-item-options>
     </ion-item-sliding>

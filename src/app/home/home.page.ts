@@ -109,7 +109,7 @@ export class HomePage {
     } */
 
 
-  mostrar(CodColigada, CodFilial, IdLan, IdBoleto, Servico, Parcela, Status, ValorLiquido, DataVencimento) {
+    pagarmento(CodColigada, CodFilial, IdLan, IdBoleto, Servico, Parcela, Status, ValorLiquido, DataVencimento) {
     this.router.navigate(['/mostrar-extrato/' + CodColigada + '/' + CodFilial + '/' + IdLan + '/' + IdBoleto + '/' + Servico + '/' + Parcela + '/' + Status + '/' + ValorLiquido + '/' + DataVencimento]);
   }
 
@@ -131,6 +131,11 @@ export class HomePage {
 
     });
 
+  }
+
+
+  geraBoleto(){
+    
   }
 
   /* excluir(id){
