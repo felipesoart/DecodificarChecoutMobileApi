@@ -79,7 +79,7 @@ export class LoginPage implements OnInit {
       if (data['StatusResponse'] == 1) {
         this.storage.setItem('session_storage', data['Response']);
         console.log(data['Response']);
-        this.dataService.setData('home', {login: this.login});
+        this.dataService.setData('home', {login: this.login});/* passa a variavel login para a outra page pelo service-data */
         this.router.navigate(['/home']);
         const toast = await this.toast.create({
            message: 'Bem vindo!',

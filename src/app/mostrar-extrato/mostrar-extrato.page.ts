@@ -65,7 +65,7 @@ export class MostrarExtratoPage implements OnInit {
   }
 
   btPagamento() {
-    return new Promise(resolve=> {
+    return new Promise(resolve => {
       let dados = {
         /* requisicao: 'add', */
         nomeCartao: this.nomeCartao,
@@ -76,19 +76,23 @@ export class MostrarExtratoPage implements OnInit {
         validade: this.validade,
         numeroCartao: this.numeroCartao,
         codSeguranca: this.codSeguranca
+        
       };
       this.presentToast();
       console.log(dados);
 
-      /* this.provider.Api(dados, 'inserirCliente.php')
+      let codColigada = this.codColigada;
+      let codFilial = this.codFilial;
+      this.provider.ApiGet(`api/Pagamento/GetFormasPagamento/${codColigada}/${codFilial}/{codServico}`)
         .subscribe(data => {
-          this.router.navigate(['/clientes']);
+          
           this.presentToast();
           console.log(data);
-        }); */
+          resolve(true);
+        });
 
     });
   }
 
-
 }
+
