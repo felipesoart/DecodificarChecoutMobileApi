@@ -27,7 +27,8 @@ const routes: Routes = [
 
   {path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   {path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  {path: 'mostrar-extrato/:CodColigada/:CodFilial/:IdLan/:IdBoleto/:Servico/:Parcela/:Status/:ValorLiquido/:DataVencimento', loadChildren: './mostrar-extrato/mostrar-extrato.module#MostrarExtratoPageModule' },
+  {path: 'mostrar-extrato/:CodColigada/:CodFilial/:IdBoleto/:CodServicoPrincipal/:Status/:ValorLiquido/:DataVencimento/:Lancamentos', loadChildren: './mostrar-extrato/mostrar-extrato.module#MostrarExtratoPageModule' },
+ /*  {path: 'mostrar-extrato/:CodColigada/:CodFilial/:IdLan/:IdBoleto/:Servico/:Parcela/:Status/:ValorLiquido/:DataVencimento', loadChildren: './mostrar-extrato/mostrar-extrato.module#MostrarExtratoPageModule' }, */
   {path: 'pagamento', loadChildren: './pagamento/pagamento.module#PagamentoPageModule' },
  
 ];

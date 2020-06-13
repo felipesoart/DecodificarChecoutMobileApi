@@ -9,6 +9,9 @@
 <ion-header>
   <ion-toolbar color="medium">
     <ion-title>Extrato Financiro</ion-title>
+          
+      <ion-button *ngIf="IdBoleto>1" slot="end" (click)="btpagar()" class= "ion-text-capitalize" color="success">Pagar</ion-button>      
+    
   </ion-toolbar>
 </ion-header>
 
@@ -41,6 +44,19 @@
     </ion-refresher-content>
   </ion-refresher> -->
   
+  <ion-item>
+    <ion-label>
+      <h2><b>Bol.
+        <span class="spantitulo">Emp.</span><span class="spantitulo">Venc.</span><span class="spantitulo">Valor</span>
+      </b>
+      </h2>
+     
+      
+     <!--  <h2><small><span class="red">R$ {{extrato.ValorLiquido}}</span> 
+    - {{extrato.DataVencimento | date:"dd/MM/yyyy"}}</small></h2> -->
+  </ion-label>
+  </ion-item>
+
 
   <ion-list>
     <!-- Sliding item with text options on both sides -->
@@ -51,14 +67,28 @@
       </ion-item-options> -->
 
       <ion-item>
-        <ion-label><h2>{{extrato.Servico}}</h2> <h2><small><span class="red">R$ {{extrato.ValorLiquido}}</span> 
-        - {{extrato.DataVencimento | date:"dd/MM/yyyy"}}</small></h2></ion-label>
+        <ion-label>
+          <h2>{{extrato.IdBoleto}} <span>{{extrato.CodColigada}}/{{extrato.CodFilial}}</span><span>{{extrato.DataVencimento | date:"dd/MM"}}</span><span>{{extrato.ValorLiquido | currency: 'R$'}}</span>
+          
+            
+              <span><ion-icon *ngIf="extrato.Status=='Em Aberto'" class="red" name="medical"
+                (click)="pagarmento(extrato.CodColigada, extrato.CodFilial,
+          extrato.IdBoleto, extrato.CodServicoPrincipal, extrato.Status,
+          extrato.ValorLiquido, extrato.DataVencimento, extrato.Lancamentos)"
+                ></ion-icon></span>
+            
+          </h2>
+         <!-- <span><ion-icon class="red" name="medical"></ion-icon></span> -->
+        
+         <!--  <h2><small><span class="red">R$ {{extrato.ValorLiquido}}</span> 
+        - {{extrato.DataVencimento | date:"dd/MM/yyyy"}}</small></h2> -->
+      </ion-label> 
       </ion-item>
    
       <ion-item-options side="end">
         <ion-item-option class= "ion-text-capitalize" color="success" (click)="pagarmento(extrato.CodColigada, extrato.CodFilial,
-          extrato.IdLan, extrato.IdBoleto, extrato.Servico, extrato.Parcela, extrato.Status,
-          extrato.ValorLiquido, extrato.DataVencimento)">
+          extrato.IdBoleto, extrato.CodServicoPrincipal, extrato.Status,
+          extrato.ValorLiquido, extrato.DataVencimento, extrato.Lancamentos)">
           Pagar
           <ion-icon slot= "end" name="cash-outline"></ion-icon>
         </ion-item-option>
@@ -74,11 +104,11 @@
 
  
  <!--  barra de rolagem -->
-  <ion-infinite-scroll  (ionInfinite)="loadData($event)">
+ <!--  <ion-infinite-scroll  (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content 
       loadingSpinner="bubbles"
       loadingText="Carragando mais dados...">
     </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  </ion-infinite-scroll> -->
    
 </ion-content>

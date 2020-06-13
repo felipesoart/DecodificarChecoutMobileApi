@@ -21,13 +21,14 @@ export class HomePage {
    
    CodColigada: number;
    CodFilial: number;
-   IdLan: number;
-   IdBoleto: number; */
-  start: number = 0;
-  Servico: string = "";
+   IdLan: number; */
+  IdBoleto: number; 
+  Status: string = "";
+  CodServicoPrincipal: string = "";
   Parcela: string = "";
   DataVencimento: string = "";
-  codColigada: number = 1;
+  codColigada: number;
+  CodFilial: number;
   /* 
   login: string = "";
   
@@ -59,11 +60,13 @@ export class HomePage {
 
   ionViewCanEnter() {
     this.listas = [];
-    this.start = 0;
+    /* this.start = 0; */
     this.carregar();
   }
 
+  btpagar(){
 
+  }
 
   //Refresh
   /*   doRefresh(event) {
@@ -77,9 +80,9 @@ export class HomePage {
 
 
   //barra de rolagem (verificar depois esse erro no php carregar)
-  loadData(event) {
+/*   loadData(event) {
 
-    /* this.start += this.limit; */
+    this.start += this.limit;
 
     setTimeout(() => {
       this.carregar().then(() => {
@@ -88,7 +91,7 @@ export class HomePage {
       });
 
     }, 500);
-  }
+  } */
 
 
   async mensagemErro() {
@@ -109,9 +112,14 @@ export class HomePage {
     } */
 
 
-    pagarmento(CodColigada, CodFilial, IdLan, IdBoleto, Servico, Parcela, Status, ValorLiquido, DataVencimento) {
+/*     pagarmento(CodColigada, CodFilial, IdLan, IdBoleto, Servico, Parcela, Status, ValorLiquido, DataVencimento) {
     this.router.navigate(['/mostrar-extrato/' + CodColigada + '/' + CodFilial + '/' + IdLan + '/' + IdBoleto + '/' + Servico + '/' + Parcela + '/' + Status + '/' + ValorLiquido + '/' + DataVencimento]);
   }
+ */
+
+pagarmento(CodColigada, CodFilial, IdBoleto, CodServicoPrincipal, Status, ValorLiquido, DataVencimento, Lancamentos) {
+  this.router.navigate(['/mostrar-extrato/' + CodColigada + '/' + CodFilial + '/' + IdBoleto + '/' + CodServicoPrincipal + '/'  + Status + '/' + ValorLiquido + '/' + DataVencimento + '/' + Lancamentos]);
+}
 
   carregar() {
     
