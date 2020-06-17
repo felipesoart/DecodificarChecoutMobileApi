@@ -3,9 +3,11 @@ import { LoginPageModule } from './../login/login.module';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostProvider } from 'src/providers/post-provider';
+import { ModalController } from '@ionic/angular';
 
 import { IonInfiniteScroll, ToastController } from '@ionic/angular';
 import { DataService } from 'src/providers/service-data';
+import { LancamentosComponent } from '../lancamentos/lancamentos.component';
 /* import { LoginPage } from '../login/login.page'; */
 
 
@@ -29,6 +31,20 @@ export class HomePage {
   DataVencimento: string = "";
   codColigada: number;
   CodFilial: number;
+  titulo: string;
+
+ 
+
+ /*  extrato: object={
+    codColigada: 2,
+    dataVencimento: "15/06/2020",
+    idLancamento: 123456,
+    servico: "mensalidade",
+    status: "Em aberto",
+    valorLiquido: 154 
+
+  } */
+
   /* 
   login: string = "";
   
@@ -45,6 +61,7 @@ export class HomePage {
     private provider: PostProvider,
     public ToastController: ToastController,
     private dataService: DataService,
+    private modalCtrl: ModalController
     /* private loginService: LoginPage */
   ) { }
 
@@ -67,6 +84,18 @@ export class HomePage {
   btpagar(){
 
   }
+  
+
+ async btLancamentos() {
+    const modal = await this.modalCtrl.create({
+    component: LancamentosComponent
+    
+    });
+    
+    modal.present();
+
+}
+  
 
   //Refresh
   /*   doRefresh(event) {

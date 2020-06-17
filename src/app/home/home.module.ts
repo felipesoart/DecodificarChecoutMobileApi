@@ -6,6 +6,11 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';/* 
 import { PostProvider } from 'src/providers/post-provider'; */
+import { LancamentosComponent } from '../lancamentos/lancamentos.component';
+/* import { LancamentosPage } from '../lancamentos/lancamentos.page'; */
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 /* import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -18,11 +23,13 @@ import { DataTableComponent } from 'src/app//data-table/data-table.component';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+    NgbModule
    /*  PostProvider, */
     /* MatTableModule,
     MatPaginatorModule,
     MatSortModule, */
   ],
-  declarations: [HomePage] /* , DataTableComponent */
+  declarations: [HomePage, LancamentosComponent] 
+  
 })
 export class HomePageModule {}
