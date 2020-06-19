@@ -8,19 +8,18 @@
 <ion-content class="color-page">
   <ion-card class="card-white">
     <ion-card-header>
-      <ion-card-title>Pagamento: {{servico}}</ion-card-title><br>
+      <ion-card-title>Pagar:</ion-card-title><br>
       <!-- <ion-card-title>{{servico}}</ion-card-title> -->
     </ion-card-header>
-  
+    
     <ion-card-content >
-      Coligada: {{codColigada}} <br>
-      Filial: {{codFilial}} <br> 
-      <!-- Ref. Lançamento: {{idLan}}<br> -->
-      <!-- Boleto: {{idBoleto}}<br> -->
-      Parcela: {{parcela}}<br>
+      Coligada: {{CodColigada}} <br>
+      Filial: {{CodFilial}} <br> 
+      Boleto: {{IdBoleto}}<br>
+      <!-- Parcela: {{parcela}}<br> -->
       <!-- Status: {{status}}<br> -->
-      Liquido (R$): {{valorLiquido}}<br>
-      Vencimento: {{dataVencimento  | date:"dd/MM/yyyy"}}<br>
+      Liquido: {{ValorLiquido | currency:'R$'}}<br>
+      Vencimento: {{DataVencimento  | date:"dd/MM/yyyy"}}<br>
     </ion-card-content>
   </ion-card>
 
@@ -40,12 +39,13 @@
       <ion-item>
         <ion-card-subtitle color= "dark"><br><b>Nome de quem está efetuando o pagamento (Nome do Comprador):</b><br><br>{{nomeRA}}</ion-card-subtitle>
       </ion-item> 
-                  
+      <!-- [(ngModel)]="meioPagamento"  
+      
+      -->    
       <ion-item>
         <ion-label>Meio de Pagamento</ion-label>
-        <ion-select interface="popover" [(ngModel)]="meioPagamento">
-           <ion-select-option value="credito">Credito</ion-select-option>
-           <ion-select-option value="debito">Débito</ion-select-option>        
+        <ion-select [compareWith]="compareWith" interface="popover">
+           <ion-select-option *ngFor="let extrato of formasPagamentos">{{extrato.Descricao + ' ' + extrato.Codigo}}</ion-select-option>                 
         </ion-select>
       </ion-item>
     
@@ -89,7 +89,7 @@
   </ion-card-header>
 
     <section class="ajuste-center-page">
-      <ion-button class= "ion-text-capitalize" color="success" (click)="btPagamento()">Pagar
+      <ion-button class= "ion-text-capitalize" color="success" >Pagar<!-- (click)="btPagamento()" -->
         <ion-icon slot= "end" name="cash-outline"></ion-icon>
       </ion-button>
   

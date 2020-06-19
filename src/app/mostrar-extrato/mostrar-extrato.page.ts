@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostProvider } from 'src/providers/post-provider';
 import { ToastController } from '@ionic/angular';
+import { compileNgModuleFromRender2 } from '@angular/compiler/src/render3/r3_module_compiler';
 
 
 @Component({
@@ -12,15 +13,24 @@ import { ToastController } from '@ionic/angular';
 export class MostrarExtratoPage implements OnInit {
 
   /* variaveis de detale do pagamento */
-  codColigada: number;
-  codFilial: number;
-  idLan: number;
-  idBoleto: number;
-  servico: string = "";
-  parcela: string = "";
-  status: string = "";
-  valorLiquido: number;
-  dataVencimento: string = "";
+  CodColigada: string = "";
+  CodFilial: string = "";
+  IdLan: number;
+  IdBoleto: number;
+  CodServicoPrincipal: string = "";
+  Servico: string = ""
+  Parcela: string = "";
+  Status: string = "";
+  ValorLiquido: number;
+  DataVencimento: string = "";
+  
+  formasPagamentos: any = [];
+
+
+
+
+
+
 
   /* variaveis de pagamento */
   nomeCartao: string = "";
@@ -41,19 +51,25 @@ export class MostrarExtratoPage implements OnInit {
 
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) => {
-      this.codColigada = data.CodColigada;
-      this.codFilial = data.CodFilial;
-      this.idLan = data.IdLan;
-      this.idBoleto = data.IdBoleto;
-      this.servico = data.Servico;
-      this.parcela = data.Parcela;
-      this.status = data.Status;
-      this.valorLiquido = data.ValorLiquido;
-      this.dataVencimento = data.DataVencimento;
+      this.CodColigada = data.CodColigada;
+      this.CodFilial = data.CodFilial;
+      this.Servico = data.Servico;
+      this.IdBoleto = data.IdBoleto;
+      this.CodServicoPrincipal = data.CodServicoPrincipal;      
+      this.Status = data.Status;
+      this.ValorLiquido = data.ValorLiquido;
+      this.DataVencimento = data.DataVencimento;
       console.log(data);
     });
+
+    this.carregarFormasPagamento();
   }
 
+  compareWithFn = (o1, o2) => {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  };
+  compareWith = this.compareWithFn;
+  
 
   async presentToast() {
     const toast = await this.toastController.create({
@@ -64,10 +80,10 @@ export class MostrarExtratoPage implements OnInit {
     toast.present();
   }
 
-  btPagamento() {
+ /*   btPagamento() {
     return new Promise(resolve => {
       let dados = {
-        /* requisicao: 'add', */
+        requisicao: 'add',
         nomeCartao: this.nomeCartao,
         nomeRA: this.nomeRA,
         meioPagamento: this.meioPagamento,
@@ -80,17 +96,25 @@ export class MostrarExtratoPage implements OnInit {
       };
       this.presentToast();
       console.log(dados);
+   
 
-      let codColigada = this.codColigada;
-      let codFilial = this.codFilial;
-      this.provider.ApiGet(`api/Pagamento/GetFormasPagamento/${codColigada}/${codFilial}/{codServico}`)
+    });
+  }  
+  */
+
+  carregarFormasPagamento(){
+
+    return new Promise(resolve => {
+    this.provider.ApiGet(`api/Pagamento/GetFormasPagamento/${this.CodColigada}/${this.CodFilial}/${this.CodServicoPrincipal}`)
         .subscribe(data => {
-          
-          this.presentToast();
-          console.log(data);
+          console.log(data)
+          for (let extrato of data['Response']['FormasPagamento']) {
+            this.formasPagamentos.push(extrato);
+            err => console.log(err)
+          }
           resolve(true);
+          
         });
-
     });
   }
 

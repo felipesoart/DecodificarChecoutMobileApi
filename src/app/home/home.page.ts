@@ -33,6 +33,7 @@ export class HomePage {
   CodFilial: number;
   titulo: string;
 
+
  
 
  /*  extrato: object={
