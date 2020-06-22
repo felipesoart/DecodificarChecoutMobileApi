@@ -24,12 +24,10 @@ export class MostrarExtratoPage implements OnInit {
   ValorLiquido: number;
   DataVencimento: string = "";
   CValue:String;
-
+  parcela: String;
 
   meioPagamentos: any = [];
-  parcelas: any = [];
-
-
+  parcelas: Array<Number> = new Array<Number>();
 
 
 
@@ -120,20 +118,22 @@ export class MostrarExtratoPage implements OnInit {
     });
   }
 
-  /*  */
+  /* let variavel: number=this.parcela as number; explo de corverta string em numero */
 
   carregarTemplatePagamento(){
-   
+    this.parcela="";
+    this.parcelas=[]
     return new Promise(resolve => {
     this.provider.ApiGet(`api/Pagamento/GetTemplatePagamento/${this.meioPagamento}`)
         .subscribe(data => {
-        this.parcelas=[]
+        
           let minParcela=data['Response']['TemplatePagamento']['MinimoParcelas']
           let maxParcela=data['Response']['TemplatePagamento']['MaximoParcelas']
           for (let p = minParcela; p <= maxParcela; p++) {
             this.parcelas.push(p);            
           }
           /* console.log(data['Response']['TemplatePagamento']['MaximoParcelas']) */
+          
           resolve(true);
           
         });
