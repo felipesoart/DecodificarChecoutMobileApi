@@ -23,9 +23,11 @@ export class MostrarExtratoPage implements OnInit {
   Status: string = "";
   ValorLiquido: number;
   DataVencimento: string = "";
-  
-  formasPagamentos: any = [];
+  CValue:String;
 
+
+  meioPagamentos: any = [];
+  parcelas: any = [];
 
 
 
@@ -35,9 +37,9 @@ export class MostrarExtratoPage implements OnInit {
   /* variaveis de pagamento */
   nomeCartao: string = "";
   nomeRA: string = "Joao Paulo Felipe Sobrinho de Souza";
-  meioPagamento: any[];
+  meioPagamento: string = "";
   bandeira: any[];
-  parcelas: number;
+ 
   validade: string = "";
   numeroCartao: string = "";
   codSeguranca: number;
@@ -63,13 +65,13 @@ export class MostrarExtratoPage implements OnInit {
     });
 
     this.carregarFormasPagamento();
+        
   }
 
-  compareWithFn = (o1, o2) => {
-    return o1 && o2 ? o1.id === o2.id : o1 === o2;
-  };
-  compareWith = this.compareWithFn;
-  
+  onChange(CValue) {
+    this.meioPagamento=CValue;
+        this.carregarTemplatePagamento();
+}
 
   async presentToast() {
     const toast = await this.toastController.create({
@@ -108,10 +110,30 @@ export class MostrarExtratoPage implements OnInit {
     this.provider.ApiGet(`api/Pagamento/GetFormasPagamento/${this.CodColigada}/${this.CodFilial}/${this.CodServicoPrincipal}`)
         .subscribe(data => {
           console.log(data)
-          for (let extrato of data['Response']['FormasPagamento']) {
-            this.formasPagamentos.push(extrato);
+          for (let f of data['Response']['FormasPagamento']) {
+            this.meioPagamentos.push(f);
             err => console.log(err)
           }
+          resolve(true);
+          
+        });
+    });
+  }
+
+  /*  */
+
+  carregarTemplatePagamento(){
+   
+    return new Promise(resolve => {
+    this.provider.ApiGet(`api/Pagamento/GetTemplatePagamento/${this.meioPagamento}`)
+        .subscribe(data => {
+        this.parcelas=[]
+          let minParcela=data['Response']['TemplatePagamento']['MinimoParcelas']
+          let maxParcela=data['Response']['TemplatePagamento']['MaximoParcelas']
+          for (let p = minParcela; p <= maxParcela; p++) {
+            this.parcelas.push(p);            
+          }
+          /* console.log(data['Response']['TemplatePagamento']['MaximoParcelas']) */
           resolve(true);
           
         });

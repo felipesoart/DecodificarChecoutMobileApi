@@ -20,6 +20,9 @@
       <!-- Status: {{status}}<br> -->
       Liquido: {{ValorLiquido | currency:'R$'}}<br>
       Vencimento: {{DataVencimento  | date:"dd/MM/yyyy"}}<br>
+
+      <!-- parcelas {{parcelas}} -->
+
     </ion-card-content>
   </ion-card>
 
@@ -40,15 +43,29 @@
         <ion-card-subtitle color= "dark"><br><b>Nome de quem está efetuando o pagamento (Nome do Comprador):</b><br><br>{{nomeRA}}</ion-card-subtitle>
       </ion-item> 
       <!-- [(ngModel)]="meioPagamento"  
-      
+       + ' ' + extrato.Codigo
+ + ' ' + extrato.IDTEMPLATEPAGAMENTOWEB
+        + ' ' + tPagamento.MaximoParcelas
       -->    
       <ion-item>
         <ion-label>Meio de Pagamento</ion-label>
-        <ion-select [compareWith]="compareWith" interface="popover">
-           <ion-select-option *ngFor="let extrato of formasPagamentos">{{extrato.Descricao + ' ' + extrato.Codigo}}</ion-select-option>                 
+        <ion-select #meiopagamento (ionChange)="onChange(meiopagamento.value)"  [(ngModel)]="meioPagamento">
+           <ion-select-option *ngFor="let f of meioPagamentos" value={{f.IdTemplatePagamentoWeb}}>
+            {{f.Descricao}}            
+            </ion-select-option>                 
         </ion-select>
       </ion-item>
-    
+
+      <ion-item>
+        <ion-label>Parcelas</ion-label>
+        <ion-select  [(ngModel)]="parcelas">
+           <ion-select-option *ngFor="let p of parcelas">
+             {{p}}
+            </ion-select-option>
+                
+        </ion-select>
+      </ion-item>
+
       <ion-item>
         <ion-label>Bandeira</ion-label>
         <ion-select interface="popover" [(ngModel)]="bandeira">
@@ -57,12 +74,12 @@
            <ion-select-option value="elo">Elo</ion-select-option>       
         </ion-select>
       </ion-item>
-
+<!-- 
       <ion-item>
         <ion-card-subtitle color= "dark"><br><b>Parcelas:</b></ion-card-subtitle>
         <ion-label position="stacked"></ion-label>
         <ion-input [(ngModel)]="parcelas" type="number" placeholder="1"></ion-input>
-      </ion-item>
+      </ion-item> -->
 
       <ion-item>
         <ion-card-subtitle color= "dark"><br><b>Validade:</b></ion-card-subtitle>

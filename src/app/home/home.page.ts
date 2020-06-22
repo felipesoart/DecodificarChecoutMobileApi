@@ -8,6 +8,8 @@ import { ModalController } from '@ionic/angular';
 import { IonInfiniteScroll, ToastController } from '@ionic/angular';
 import { DataService } from 'src/providers/service-data';
 import { LancamentosComponent } from '../lancamentos/lancamentos.component';
+import { createPublicKey } from 'crypto';
+import { CheckboxControlValueAccessor } from '@angular/forms';
 /* import { LoginPage } from '../login/login.page'; */
 
 
@@ -83,7 +85,7 @@ export class HomePage {
   }
 
   btpagar(){
-
+    
   }
   
 
