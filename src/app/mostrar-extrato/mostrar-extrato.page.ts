@@ -24,7 +24,10 @@ export class MostrarExtratoPage implements OnInit {
   ValorLiquido: number;
   DataVencimento: string = "";
   CValue:String;
+  meioPagamento: string = "";
   parcela: String;
+  
+
 
   meioPagamentos: any = [];
   parcelas: Array<Number> = new Array<Number>();
@@ -35,7 +38,7 @@ export class MostrarExtratoPage implements OnInit {
   /* variaveis de pagamento */
   nomeCartao: string = "";
   nomeRA: string = "Joao Paulo Felipe Sobrinho de Souza";
-  meioPagamento: string = "";
+  
   bandeira: any[];
  
   validade: string = "";
