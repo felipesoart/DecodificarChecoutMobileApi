@@ -26,7 +26,7 @@ export class MostrarExtratoPage implements OnInit {
   cvv: number;
   CValue: String;
 
-  
+
   validadeAtual: number = new Date().getFullYear();
   validades: Array<Number> = new Array<Number>();
   validadeAno: number;
@@ -97,7 +97,7 @@ export class MostrarExtratoPage implements OnInit {
     });
 
     this.carregarFormasPagamento();
-    this.carregarData();
+    this.carregarValidadeAno();
   }
 
   onChange(CValue) {
@@ -192,7 +192,7 @@ export class MostrarExtratoPage implements OnInit {
     });
   }
 
-  carregarData(){
+  carregarValidadeAno(){
 
     this.validades = []
     return new Promise(resolve => {
