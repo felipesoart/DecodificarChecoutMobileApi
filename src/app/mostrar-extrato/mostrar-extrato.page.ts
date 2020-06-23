@@ -23,16 +23,27 @@ export class MostrarExtratoPage implements OnInit {
   Status: string = "";
   ValorLiquido: number;
   DataVencimento: string = "";
+  cvv: number;
   CValue: String;
+
   
-  
-  
+  validadeAtual: number = new Date().getFullYear();
+  validades: Array<Number> = new Array<Number>();
+  validadeAno: number;
 
   meioPagamento: string = "";
   meioPagamentos: any = [];
 
   parcela: String;
   parcelas: Array<Number> = new Array<Number>();
+
+/*   data: String;
+  datas: any = [];
+  datasAtual: [
+    {mindataAtual: 2020},
+    {maxdataAtual: 2030}
+
+  ] */
 
   bandeira: String;
   bandeiras: any = [];
@@ -61,7 +72,7 @@ export class MostrarExtratoPage implements OnInit {
 
 
 
-  validade: string = "";
+  
   numeroCartao: string = "";
   codSeguranca: number;
 
@@ -86,7 +97,7 @@ export class MostrarExtratoPage implements OnInit {
     });
 
     this.carregarFormasPagamento();
-
+    this.carregarData();
   }
 
   onChange(CValue) {
@@ -163,6 +174,7 @@ export class MostrarExtratoPage implements OnInit {
         });
     });
   }
+
   carragarBandeira() {
     this.bandeira = "";
     this.bandeiras=[];
@@ -175,6 +187,20 @@ export class MostrarExtratoPage implements OnInit {
         /* console.log(this.bandeiras=this.bandeirasDebito) */
         this.bandeiras=this.bandeirasDebito;
       }
+      resolve(true);
+
+    });
+  }
+
+  carregarData(){
+
+    this.validades = []
+    return new Promise(resolve => {
+      let mindataAtual = this.validadeAtual
+      let maxdataAtual = this.validadeAtual + 11
+        for (let v = mindataAtual; v <= maxdataAtual; v++) {
+          this.validades.push(v);
+        }
       resolve(true);
 
     });
