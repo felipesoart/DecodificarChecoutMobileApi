@@ -21,7 +21,8 @@
       Liquido: {{ValorLiquido | currency:'R$'}}<br>
       Vencimento: {{DataVencimento  | date:"dd/MM/yyyy"}}<br>
 
-      <!-- parcelas {{parcelas}} -->
+      bandeira {{bandeira}}
+      parcela {{parcela}}
 
     </ion-card-content>
   </ion-card>
@@ -50,8 +51,8 @@
       <ion-item>
         <ion-label>Meio de Pagamento</ion-label>
         <ion-select #meiopagamento (ionChange)="onChange(meiopagamento.value)"  [(ngModel)]="meioPagamento">
-           <ion-select-option *ngFor="let f of meioPagamentos" value={{f.IdTemplatePagamentoWeb}}>
-            {{f.Descricao}}            
+           <ion-select-option *ngFor="let mp of meioPagamentos" value={{mp.IdTemplatePagamentoWeb}}>
+            {{mp.Descricao}}            
             </ion-select-option>                 
         </ion-select>
       </ion-item>
@@ -59,7 +60,7 @@
       <ion-item>
         <ion-label>Parcelas</ion-label>
         <ion-select  [(ngModel)]="parcela">
-           <ion-select-option *ngFor="let p of parcelas">
+           <ion-select-option *ngFor="let p of parcelas" value={{p}}>
              {{p}}
             </ion-select-option>
                 
@@ -68,10 +69,9 @@
 
       <ion-item>
         <ion-label>Bandeira</ion-label>
-        <ion-select interface="popover" [(ngModel)]="bandeira">
-           <ion-select-option value="master">MastarCard</ion-select-option>
-           <ion-select-option value="visa">Visa</ion-select-option>
-           <ion-select-option value="elo">Elo</ion-select-option>       
+        <ion-select [(ngModel)]="bandeira"><!-- interface="popover" -->
+           <ion-select-option *ngFor="let b of bandeiras" value={{b.nomeBandeira}}>{{b.nomeBandeira}}</ion-select-option>
+      
         </ion-select>
       </ion-item>
 <!-- 
