@@ -25,25 +25,29 @@ export class MostrarExtratoPage implements OnInit {
   DataVencimento: string = "";
   cvv: number;
   CValue: String;
+  nomeCartao: string = "";
+  numeroCartao: string = "";
 
 
-  validadeAtual: number = new Date().getFullYear();
-  validades: Array<Number> = new Array<Number>();
+  validadeAtualAno: number = new Date().getFullYear();
+  validadesAno: Array<Number> = new Array<Number>();
   validadeAno: number;
+
 
   meioPagamento: string = "";
   meioPagamentos: any = [];
 
   parcela: String;
   parcelas: Array<Number> = new Array<Number>();
-
-/*   data: String;
-  datas: any = [];
-  datasAtual: [
-    {mindataAtual: 2020},
-    {maxdataAtual: 2030}
-
-  ] */
+  
+  validadeMes: number;
+  validadesMes: any = [];
+  validadeMeses: any=[
+    {mes: 1}, {mes: 2}, {mes: 3},
+    {mes: 4}, {mes: 5}, {mes: 6},
+    {mes: 7}, {mes: 8}, {mes: 9},
+    {mes: 10}, {mes: 11}, {mes: 12} 
+  ];
 
   bandeira: String;
   bandeiras: any = [];
@@ -61,20 +65,6 @@ export class MostrarExtratoPage implements OnInit {
     {nomeBandeira: 'Visa'},
     {nomeBandeira: 'MasterCard'}
   ]
-
-
-
-
-
-  /* variaveis de pagamento */
-  nomeCartao: string = "";
-  nomeRA: string = "Joao Paulo Felipe Sobrinho de Souza";
-
-
-
-  
-  numeroCartao: string = "";
-  codSeguranca: number;
 
   constructor(
     private router: Router,
@@ -98,6 +88,7 @@ export class MostrarExtratoPage implements OnInit {
 
     this.carregarFormasPagamento();
     this.carregarValidadeAno();
+    this.carragarValidadeMes();
   }
 
   onChange(CValue) {
@@ -194,13 +185,24 @@ export class MostrarExtratoPage implements OnInit {
 
   carregarValidadeAno(){
 
-    this.validades = []
+    this.validadesAno = []
     return new Promise(resolve => {
-      let mindataAtual = this.validadeAtual
-      let maxdataAtual = this.validadeAtual + 11
+      let mindataAtual = this.validadeAtualAno
+      let maxdataAtual = this.validadeAtualAno + 11
         for (let v = mindataAtual; v <= maxdataAtual; v++) {
-          this.validades.push(v);
+          this.validadesAno.push(v);
         }
+      resolve(true);
+
+    });
+  }
+
+  carragarValidadeMes() {    
+    this.validadesMes=[];
+    return new Promise(resolve => {      
+      
+        this.validadesMes=this.validadeMeses;        
+            
       resolve(true);
 
     });
