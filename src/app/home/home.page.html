@@ -9,8 +9,8 @@
 <ion-header>
   <ion-toolbar color="medium">
     <ion-title>Extrato Financiro</ion-title>
-
-    <ion-button *ngIf="IdBoleto>1" slot="end" (click)="btpagar()" class="ion-text-capitalize" color="success">Pagar
+    <!-- *ngIf="listaBoletosSelecionados>1" -->
+    <ion-button  slot="end" *ngIf="listaBoletosSelecionados.length>1" (click)="btpagar()" class="ion-text-capitalize" color="success">Pagar
     </ion-button>
 
   </ion-toolbar>
@@ -51,56 +51,74 @@
         <ion-row>
           <ion-col>
             <div>
-              <b>Selec.</b>              
+              <b>Selec.</b>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <b>Boleto</b>              
+              <b>Boleto</b>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <b>Empr.</b>              
+              <b>Empr.</b>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <b> Venc.</b>             
+              <b> Venc.</b>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <b>Valor</b>             
+              <b>Valor</b>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <b>R. Lanç.</b>              
+              <b>R. Lanç.</b>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <b>Pagar</b>              
+              <b>Pagar</b>
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
 
+
+      
+
+
       <!-- Sliding item with text options on both sides -->
-      <ion-item-sliding *ngFor="let extrato of listas">
+      <ion-item-sliding *ngFor="let extrato of listas; let i = index">
+
+        
+
         <ion-item>
           <ion-label>
             <ion-grid>
               <ion-row>
                 <ion-col>
                   <div>
-                    <ion-checkbox color="primary" slot="start"></ion-checkbox>
+                    <!-- <ion-list>
+                      <ion-item *ngFor="let i = index"> -->
+                        <ion-checkbox color="primary" slot="start"
+                        (ionChange)="onBoletosPagarChange($event, extrato)">
+                        </ion-checkbox>
+                     <!--  </ion-item>
+                    </ion-list> -->
+                   <!--  <ion-checkbox color="primary" slot="start"></ion-checkbox>
+                    <ion-checkbox  *ngFor="let extrato of listas"
+                    color="primary" slot="start" [(ngModel)]="boletosPagar[i].checked" 
+                    (ionChange)="onBoletosPagarChange()">
+                  </ion-checkbox> -->
                   </div>
                 </ion-col>
                 <ion-col>
                   <div>
-                    {{extrato.IdBoleto}}
+                    {{extrato.IdBoleto}}{{i}}
                   </div>
                 </ion-col>
                 <ion-col>

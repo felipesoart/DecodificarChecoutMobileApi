@@ -1,3 +1,4 @@
+import { DataService } from './../../providers/service-data';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostProvider } from 'src/providers/post-provider';
@@ -66,11 +67,15 @@ export class MostrarExtratoPage implements OnInit {
     {nomeBandeira: 'MasterCard'}
   ]
 
+  listaBoletosSelecionados: Array<any> = new Array<any>();
+  
+
   constructor(
     private router: Router,
     private provider: PostProvider,
     public toastController: ToastController,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
@@ -86,9 +91,12 @@ export class MostrarExtratoPage implements OnInit {
       console.log(data);
     });
 
+    this.listaBoletosSelecionados = this.dataService.getData()["listaBoletosSelecionados"];
     this.carregarFormasPagamento();
     this.carregarValidadeAno();
     this.carragarValidadeMes();
+
+    console.log(this.listaBoletosSelecionados)
   }
 
   onChange(CValue) {
@@ -207,6 +215,8 @@ export class MostrarExtratoPage implements OnInit {
 
     });
   }
+
+  
 
 
 }

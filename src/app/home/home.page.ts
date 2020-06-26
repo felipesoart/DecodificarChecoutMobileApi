@@ -10,6 +10,8 @@ import { DataService } from 'src/providers/service-data';
 import { LancamentosComponent } from '../lancamentos/lancamentos.component';
 import { createPublicKey } from 'crypto';
 import { CheckboxControlValueAccessor } from '@angular/forms';
+import { element } from 'protractor';
+import { exit } from 'process';
 /* import { LoginPage } from '../login/login.page'; */
 
 
@@ -35,7 +37,15 @@ export class HomePage {
   CodFilial: number;
   titulo: string;
 
+  listaBoletosSelecionados: Array<any> = new Array<any>();
+  boletosPagar: Array<any> = new Array<any>();
+  
+  
+  checkbox: boolean;
 
+  bp: any =[
+    
+  ];
  
 
  /*  extrato: object={
@@ -75,7 +85,8 @@ export class HomePage {
 
   ngOnInit() {
     this.carregar();
-    
+    console.log(this.boletosPagar)
+   
   }
 
   ionViewCanEnter() {
@@ -85,6 +96,7 @@ export class HomePage {
   }
 
   btpagar(){
+    this.dataService.setData('mostrar-extrato', {listaBoletosSelecionados: this.listaBoletosSelecionados});
     
   }
   
@@ -163,13 +175,42 @@ pagarmento(CodColigada, CodFilial, IdBoleto, CodServicoPrincipal, Status, ValorL
         console.log(data);
         for (let extrato of data['Response']['Itens']) {
           this.listas.push(extrato);
+          
+          this.boletosPagar.push({extrato: extrato, checked: false})
+          
           err => console.log(err)
         }
         resolve(true);
-        
+       
       });
 
     });
+
+  }
+
+  onBoletosPagarChange(event, extrato){
+    
+    this.boletosPagar.forEach(element=>{
+      if (extrato.IdBoleto == element.extrato.IdBoleto) {
+        element.checked = event.detail.checked;
+        console.log(element)
+        exit;
+      }
+    
+
+    })
+
+    this.listaBoletosSelecionados=this.obterBoletosSelecionados(this.boletosPagar);
+    console.log(this.boletosPagar);
+   
+  }
+
+  obterBoletosSelecionados(boletosPagar){
+    let listaBoletosSelecionados: Array<any> = new Array<any>();
+    
+    listaBoletosSelecionados = boletosPagar.map((extrato: any)=>(extrato.checked == true ? extrato: null));
+    listaBoletosSelecionados = listaBoletosSelecionados.filter(e=>e!=null);
+    return listaBoletosSelecionados;
 
   }
 
