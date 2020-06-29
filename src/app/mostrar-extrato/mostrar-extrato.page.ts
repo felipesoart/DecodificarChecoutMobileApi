@@ -29,6 +29,7 @@ export class MostrarExtratoPage implements OnInit {
   nomeCartao: string = "";
   numeroCartao: string = "";
 
+  valorTotal: number  = 0.00;
 
   validadeAtualAno: number = new Date().getFullYear();
   validadesAno: Array<Number> = new Array<Number>();
@@ -68,6 +69,7 @@ export class MostrarExtratoPage implements OnInit {
   ]
 
   listaBoletosSelecionados: Array<any> = new Array<any>();
+  listasBoletosSelecionados: any = [];
   
 
   constructor(
@@ -94,9 +96,10 @@ export class MostrarExtratoPage implements OnInit {
     this.listaBoletosSelecionados = this.dataService.getData()["listaBoletosSelecionados"];
     this.carregarFormasPagamento();
     this.carregarValidadeAno();
-    this.carragarValidadeMes();
+    this.carregarValidadeMes();
 
-    console.log(this.listaBoletosSelecionados)
+    console.log(this.listaBoletosSelecionados);
+    this.carregarlistaBoletosSelecionados();
   }
 
   onChange(CValue) {
@@ -205,7 +208,7 @@ export class MostrarExtratoPage implements OnInit {
     });
   }
 
-  carragarValidadeMes() {    
+  carregarValidadeMes() {    
     this.validadesMes=[];
     return new Promise(resolve => {      
       
@@ -216,7 +219,23 @@ export class MostrarExtratoPage implements OnInit {
     });
   }
 
+  carregarlistaBoletosSelecionados(){
+
+    return new Promise(resolve => {
+      let listaBoletosSelecionados = this.listaBoletosSelecionados
+      for (let lbs of listaBoletosSelecionados) {
+        /* carrega total do valor */
+        this.listasBoletosSelecionados.push(lbs); 
+        let convert: number = lbs['extrato'].ValorLiquido as number;
+        this.valorTotal += convert;
+
+        err => console.log(err)
+      }
+      
+      resolve(true);
+       
+    });
+
+  } 
   
-
-
 }

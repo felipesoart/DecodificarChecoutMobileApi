@@ -10,7 +10,7 @@
   <ion-toolbar color="medium">
     <ion-title>Extrato Financiro</ion-title>
     <!-- *ngIf="listaBoletosSelecionados>1" -->
-    <ion-button  slot="end" *ngIf="listaBoletosSelecionados.length>1" (click)="btpagar()" class="ion-text-capitalize" color="success">Pagar
+    <ion-button  style="padding-right: 10px" slot="end" *ngIf="listaBoletosSelecionados.length>1" (click)="btpagar(null)" class="ion-text-capitalize" color="success">Pagar
     </ion-button>
 
   </ion-toolbar>
@@ -118,7 +118,7 @@
                 </ion-col>
                 <ion-col>
                   <div>
-                    {{extrato.IdBoleto}}{{i}}
+                    {{extrato.IdBoleto}}
                   </div>
                 </ion-col>
                 <ion-col>
@@ -143,9 +143,10 @@
                 </ion-col>
                 <ion-col>
                   <div>
-                    <ion-icon *ngIf="extrato.Status=='Em Aberto'" class="red" name="medical" (click)="pagarmento(extrato.CodColigada, extrato.CodFilial,
+                    <ion-icon *ngIf="extrato.Status=='Em Aberto'" class="red" name="medical" (click)="btpagar(extrato)"></ion-icon>
+                    <!-- <ion-icon *ngIf="extrato.Status=='Em Aberto'" class="red" name="medical" (click)="pagarmento(extrato.CodColigada, extrato.CodFilial,
           extrato.IdBoleto, extrato.CodServicoPrincipal, extrato.Status,
-          extrato.ValorLiquido, extrato.DataVencimento, extrato.Lancamentos)"></ion-icon>
+          extrato.ValorLiquido, extrato.DataVencimento, extrato.Lancamentos)"></ion-icon> -->
                   </div>
                 </ion-col>
               </ion-row>

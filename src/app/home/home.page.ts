@@ -95,10 +95,19 @@ export class HomePage {
     this.carregar();
   }
 
-  btpagar(){
-    this.dataService.setData('mostrar-extrato', {listaBoletosSelecionados: this.listaBoletosSelecionados});
-    
+  btpagar(extrato){    
+      if (extrato!=null) {
+        let listaBoletosSelecionados: Array<any> = new Array<any>();
+        
+        listaBoletosSelecionados.push({extrato: extrato})
+      this.dataService.setData('mostrar-extrato', {listaBoletosSelecionados: listaBoletosSelecionados});
+   
+    }else{
+      this.dataService.setData('mostrar-extrato', {listaBoletosSelecionados: this.listaBoletosSelecionados});
+  
+    }
   }
+
   
 
  async btLancamentos() {
@@ -195,8 +204,7 @@ pagarmento(CodColigada, CodFilial, IdBoleto, CodServicoPrincipal, Status, ValorL
         element.checked = event.detail.checked;
         console.log(element)
         exit;
-      }
-    
+      }    
 
     })
 

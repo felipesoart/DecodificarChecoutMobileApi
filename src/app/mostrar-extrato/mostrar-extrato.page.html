@@ -6,26 +6,85 @@
 
 <!-- dedalhes do pagamento -->
 <ion-content class="color-page">
+
   <ion-card class="card-white">
-    <ion-card-header>
-      <ion-card-title>Pagar:</ion-card-title><br>
-      <!-- <ion-card-title>{{servico}}</ion-card-title> -->
-    </ion-card-header>
+    
+      <ion-card-title style="padding-left: 5%"><br>Você esta pagando esses boletos</ion-card-title>    
+   
 
-    <ion-card-content>
-      Coligada: {{CodColigada}} <br>
-      Filial: {{CodFilial}} <br>
-      Boleto: {{IdBoleto}}<br>
-      <!-- Parcela: {{parcela}}<br> -->
-      <!-- Status: {{status}}<br> -->
-      Liquido: {{ValorLiquido | currency:'R$'}}<br>
-      Vencimento: {{DataVencimento  | date:"dd/MM/yyyy"}}<br>
+    <ion-list class="card-white">
 
-      vm {{validadeMes}}
-      vm {{validadeAno}}
+      <ion-grid>
+        <ion-row>
 
-    </ion-card-content>
+          <ion-col>
+            <div>
+              <b>Boleto</b>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <b>Empr.</b>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <b> Venc.</b>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <b>Valor</b>
+            </div>
+          </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+
+      <ion-item-sliding *ngFor="let lbs of listasBoletosSelecionados">
+        
+          <ion-label >
+            <ion-grid >
+              <ion-row>
+                <ion-col>
+                  <div>
+                    {{lbs['extrato'].IdBoleto}}
+                  </div>
+                </ion-col>
+
+                <ion-col>
+                  <div>
+                    {{lbs['extrato'].CodColigada}}/{{lbs['extrato'].CodFilial}}
+                  </div>
+                </ion-col>
+
+                <ion-col>
+                  <div>
+                    {{lbs['extrato'].DataVencimento | date:"dd/MM"}}
+                  </div>
+                </ion-col>
+
+                <ion-col>
+                  <div>
+                    {{lbs['extrato'].ValorLiquido | currency: 'R$'}}
+                  </div>
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+
+
+          </ion-label>
+   
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-card-title style="display: flex; justify-content: flex-end; padding-right: 5%"><b>Total a pagar: {{valorTotal | currency: 'R$'}}</b></ion-card-title><br>
+
   </ion-card>
+
+
+ 
 
   <!-- forma de pagamento -->
   <ion-card class="card-white">
@@ -53,7 +112,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label>Nome impresso no cartão: </ion-label>         
+          <ion-label>Nome impresso no cartão: </ion-label>
           <ion-label class="ion-text-upercase" position="stacked"></ion-label>
           <ion-input [(ngModel)]="nomeCartao" type="text" placeholder="Conforme está impresso no cartão"></ion-input>
         </ion-item>
@@ -64,7 +123,7 @@
             <ion-col size="9">
               <div>
                 <ion-item>
-                  <ion-label>Número de Cartão: </ion-label>                  
+                  <ion-label>Número de Cartão: </ion-label>
                   <ion-label position="stacked"></ion-label>
                   <ion-input [(ngModel)]="numeroCartao" type="text"></ion-input>
                 </ion-item>
@@ -73,11 +132,11 @@
             <ion-col size="3">
               <div>
                 <ion-item>
-                  <ion-label>CVV: 
+                  <ion-label>CVV:
                     <ion-icon name="information-circle">
                       <!-- colocar o botao informativo -->
                     </ion-icon>
-                  </ion-label>                
+                  </ion-label>
                   <ion-label position="stacked"></ion-label>
                   <ion-input [(ngModel)]="cvv" type="text" pattern="[0-9]*" maxlength="3"></ion-input>
                 </ion-item>
