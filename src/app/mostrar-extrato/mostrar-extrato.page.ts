@@ -16,9 +16,11 @@ export class MostrarExtratoPage implements OnInit {
   /* variaveis de detale do pagamento */
   CodColigada: string = "";
   CodFilial: string = "";
+  CodServicoPrincipal: string = "";
+
   IdLan: number;
   IdBoleto: number;
-  CodServicoPrincipal: string = "";
+ 
   Servico: string = ""
   Parcela: string = "";
   Status: string = "";
@@ -31,9 +33,7 @@ export class MostrarExtratoPage implements OnInit {
 
   valorTotal: number  = 0.00;
 
-  validadeAtualAno: number = new Date().getFullYear();
-  validadesAno: Array<Number> = new Array<Number>();
-  validadeAno: number;
+
 
 
   meioPagamento: string = "";
@@ -41,6 +41,10 @@ export class MostrarExtratoPage implements OnInit {
 
   parcela: String;
   parcelas: Array<Number> = new Array<Number>();
+
+  validadeAtualAno: number = new Date().getFullYear();
+  validadesAno: Array<Number> = new Array<Number>();
+  validadeAno: number;
   
   validadeMes: number;
   validadesMes: any = [];
@@ -81,7 +85,7 @@ export class MostrarExtratoPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.actRoute.params.subscribe((data: any) => {
+    /* this.actRoute.params.subscribe((data: any) => {
       this.CodColigada = data.CodColigada;
       this.CodFilial = data.CodFilial;
       this.Servico = data.Servico;
@@ -91,15 +95,19 @@ export class MostrarExtratoPage implements OnInit {
       this.ValorLiquido = data.ValorLiquido;
       this.DataVencimento = data.DataVencimento;
       console.log(data);
-    });
+    }); */
+
+     
+
 
     this.listaBoletosSelecionados = this.dataService.getData()["listaBoletosSelecionados"];
+    
+    
+    this.carregarlistaBoletosSelecionados();
     this.carregarFormasPagamento();
     this.carregarValidadeAno();
     this.carregarValidadeMes();
-
-    console.log(this.listaBoletosSelecionados);
-    this.carregarlistaBoletosSelecionados();
+    
   }
 
   onChange(CValue) {
@@ -140,9 +148,11 @@ export class MostrarExtratoPage implements OnInit {
    */
 
   carregarFormasPagamento() {
-
+         let codColigada: string = this.CodColigada.toString();
+         let codFilial: string = this.CodFilial.toString();
+         let codServicoPrincipal: string = this.CodServicoPrincipal.toString();
     return new Promise(resolve => {
-      this.provider.ApiGet(`api/Pagamento/GetFormasPagamento/${this.CodColigada}/${this.CodFilial}/${this.CodServicoPrincipal}`)
+      this.provider.ApiGet(`api/Pagamento/GetFormasPagamento/${codColigada}/${codFilial}/${codServicoPrincipal}`)
         .subscribe(data => {
           /* console.log(data) */
           for (let mp of data['Response']['FormasPagamento']) {
@@ -227,8 +237,13 @@ export class MostrarExtratoPage implements OnInit {
         /* carrega total do valor */
         this.listasBoletosSelecionados.push(lbs); 
         let convert: number = lbs['extrato'].ValorLiquido as number;
+        this.CodFilial = lbs['extrato'].CodFilial as string;
+        this.CodColigada = lbs['extrato'].CodColigada as string;
+        this.CodServicoPrincipal = lbs['extrato'].CodServicoPrincipal as string;
         this.valorTotal += convert;
-
+/* console.log(lbs['extrato'].CodColigada);
+console.log(lbs['extrato'].CodFilial);
+console.log(lbs['extrato'].CodServicoPrincipal); */
         err => console.log(err)
       }
       
