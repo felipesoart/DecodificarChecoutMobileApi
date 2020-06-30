@@ -107,7 +107,7 @@ export class MostrarExtratoPage implements OnInit {
     this.carregarFormasPagamento();
     this.carregarValidadeAno();
     this.carregarValidadeMes();
-    
+
   }
 
   onChange(CValue) {
@@ -241,9 +241,7 @@ export class MostrarExtratoPage implements OnInit {
         this.CodColigada = lbs['extrato'].CodColigada as string;
         this.CodServicoPrincipal = lbs['extrato'].CodServicoPrincipal as string;
         this.valorTotal += convert;
-/* console.log(lbs['extrato'].CodColigada);
-console.log(lbs['extrato'].CodFilial);
-console.log(lbs['extrato'].CodServicoPrincipal); */
+
         err => console.log(err)
       }
       
