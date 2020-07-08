@@ -8,13 +8,26 @@
 
 <ion-header>
   <ion-toolbar color="medium">
+    
+    <ion-buttons slot="start">
+      <ion-button slot="start" (click)="toggleMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>     
+    </ion-buttons>
+
     <ion-title>Extrato Financiro</ion-title>
     <!-- *ngIf="listaBoletosSelecionados>1" -->
-    <ion-button  style="padding-right: 10px" slot="end" *ngIf="listaBoletosSelecionados.length>1" (click)="btpagar(null)" class="ion-text-capitalize" color="success">Pagar
+    <ion-button  style="padding-right: 10px" slot="end" 
+    *ngIf="listaBoletosSelecionados.length>1" (click)="btpagar(null)" 
+    class="ion-text-capitalize" color="success">Pagar
     </ion-button>
 
   </ion-toolbar>
 </ion-header>
+
+<!-- menu component -->
+<app-menu></app-menu>
+    <ion-router-outlet id="principal"></ion-router-outlet>
 
 <!-- barra de buscar(search) -->
 <!-- <ion-row>

@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -9,6 +10,7 @@ import { PostProvider } from 'src/providers/post-provider'; */
 import { LancamentosComponent } from '../lancamentos/lancamentos.component';
 /* import { LancamentosPage } from '../lancamentos/lancamentos.page'; */
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ComponentsModule } from '../components/components.module';
 
 
 /* import { MatTableModule } from '@angular/material/table';
@@ -23,7 +25,8 @@ import { DataTableComponent } from 'src/app//data-table/data-table.component';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    NgbModule
+    NgbModule,
+    ComponentsModule
    /*  PostProvider, */
     /* MatTableModule,
     MatPaginatorModule,

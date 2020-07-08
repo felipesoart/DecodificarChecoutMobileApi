@@ -3,7 +3,7 @@ import { LoginPageModule } from './../login/login.module';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostProvider } from 'src/providers/post-provider';
-import { ModalController } from '@ionic/angular';
+import { ModalController, MenuController } from '@ionic/angular';
 
 import { IonInfiniteScroll, ToastController } from '@ionic/angular';
 import { DataService } from 'src/providers/service-data';
@@ -70,6 +70,7 @@ export class HomePage {
 
 
   constructor(
+    private menu: MenuController,
     private router: Router,
     private provider: PostProvider,
     public ToastController: ToastController,
@@ -88,6 +89,10 @@ export class HomePage {
     console.log(this.boletosPagar)
    
   }
+
+  toggleMenu(){
+    this.menu.toggle();
+   }
 
   ionViewCanEnter() {
     this.listas = [];
