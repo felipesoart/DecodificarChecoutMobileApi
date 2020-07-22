@@ -14,8 +14,8 @@
      <ion-card>
       
       <ion-header>
-        <ion-toolbar color="medium">
-          <ion-title>Extrato Lançamentos</ion-title>
+        <ion-toolbar color="white" >
+          <ion-title *ngFor="let lancamento of extratoFinanLancamentos">{{lancamento.CodColigada}} - RA: {{ra}} - Boleto: {{titulo}} </ion-title>
       
           <ion-button style="padding-right: 10px"  slot="end" (click)="btFechar()" class="ion-text-capitalize" color="success">Fechar</ion-button>
       

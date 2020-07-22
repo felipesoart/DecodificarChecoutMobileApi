@@ -37,6 +37,7 @@ export class HomePage {
   CodFilial: number;
   titulo: string;
 
+  ra: String = this.dataService.getData()["login"]
   listaBoletosSelecionados: Array<any> = new Array<any>();
   boletosPagar: Array<any> = new Array<any>();
   

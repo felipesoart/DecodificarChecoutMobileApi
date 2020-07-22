@@ -1,5 +1,11 @@
 [
+    
     {
+    "icone": "logo-usd",
+    "name": "Agendamento",
+    "link": "/agendamento"
+  },
+  {
     "icone": "log-out-outline",
     "name": "Sair",
     "link": "/login"

@@ -22,6 +22,7 @@ export class LancamentosComponent implements OnInit {
   closeResult: string;
   /* listaLancamentos: Array<Object> = new Array(); */
   @Input() extratoFinanLancamentos: Array<any>;
+  @Input() titulo: string;
   /* listas: any = []; */
   /* codColigada: number;
   dataVencimento: string = "";
@@ -30,6 +31,8 @@ export class LancamentosComponent implements OnInit {
   status: string = "";
   valorLiquido: number;
   lista: Observable<any>; */
+  ra: String = this.dataService.getData()["login"]
+  IdBoleto: number;
 
   
 
@@ -51,7 +54,9 @@ export class LancamentosComponent implements OnInit {
   open(content) {
     this.modalService.open(content).result.then(
         (result) => {
-            this.closeResult = `Closed with: ${result}`;            
+            this.closeResult = `Closed with: ${result}`;   
+            console.log(this.extratoFinanLancamentos);     
+            
         },
         (reason) => {
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -62,7 +67,7 @@ export class LancamentosComponent implements OnInit {
 
 btFechar(){
   this.modalService.dismissAll();
- /*  console.log(this.extratoFinanLancamentos); */
+  console.log(this.extratoFinanLancamentos);
 }
 
 private getDismissReason(reason: any): string {
