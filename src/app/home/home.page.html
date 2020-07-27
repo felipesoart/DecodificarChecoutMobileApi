@@ -23,10 +23,10 @@
   </ion-title>
 
         <!-- botao para quando celeciona mais de um checkbox de boletos -->
-    <ion-button  style="padding-right: 10px" slot="end" 
+    <!-- <ion-button  style="padding-right: 10px" slot="end" 
     *ngIf="listaBoletosSelecionados.length>1" (click)="btpagar(null)" 
     class="ion-text-capitalize" color="success">Pagar
-    </ion-button>
+    </ion-button> -->
 
   </ion-toolbar>
 </ion-header>
@@ -62,7 +62,24 @@
       refreshingSpinner="circles"
       refreshingText="Carregando...">
     </ion-refresher-content>
-  </ion-refresher> -->
+  </ion-refresher> style="padding-right: 10px" 
+ color-botao
+-->
+<ion-list class="fimlinha">
+ 
+  <ion-button slot="end" size="small"
+  (click)="btNegociacao()" 
+   class="ion-text-capitalize color-botao">Negociação
+  </ion-button>
+
+  <!-- botao para quando celeciona mais de um checkbox de boletos -->
+  <ion-button shape="15%" slot="end" size="small"
+  *ngIf="listaBoletosSelecionados.length>1" (click)="btpagar(null)" 
+   class="ion-text-capitalize color-botao">Pagar
+  </ion-button>
+
+</ion-list>
+
 
     <ion-list>
 

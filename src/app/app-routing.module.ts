@@ -28,6 +28,14 @@ const routes: Routes = [
   {path: 'mostrar-extrato/:CodColigada/:CodFilial/:IdBoleto/:CodServicoPrincipal/:Status/:ValorLiquido/:DataVencimento/:Lancamentos', loadChildren: './mostrar-extrato/mostrar-extrato.module#MostrarExtratoPageModule' },
  /*  {path: 'mostrar-extrato/:CodColigada/:CodFilial/:IdLan/:IdBoleto/:Servico/:Parcela/:Status/:ValorLiquido/:DataVencimento', loadChildren: './mostrar-extrato/mostrar-extrato.module#MostrarExtratoPageModule' }, */
   {path: 'lancamentos/:CodColigada/:IdLancamento/:Servico/:Status/:ValorLiquido/:DataVencimento', loadChildren: './lancamentos/lancamentos.module#LancamentosPageModule' },
+  {
+    path: 'agendamento',
+    loadChildren: () => import('./agendamento/agendamento.module').then( m => m.AgendamentoPageModule)
+  },
+  {
+    path: 'negociacoes',
+    loadChildren: () => import('./negociacoes/negociacoes.module').then( m => m.NegociacoesPageModule)
+  },
 
   
 ];

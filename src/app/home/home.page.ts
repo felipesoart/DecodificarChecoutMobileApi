@@ -101,6 +101,10 @@ export class HomePage {
     this.carregar();
   }
 
+  btNegociacao(){
+
+  }
+
   btpagar(extrato){    
       if (extrato!=null) {
         let listaBoletosSelecionados: Array<any> = new Array<any>();
