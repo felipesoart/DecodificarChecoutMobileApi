@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>agendamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-grid>
+      <ion-row >
+        <ion-col>
+          <div>
+            <b>#</b>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <b>Boleto</b>
+          </div>
+        </ion-col>
+        <ion-col class="{{Status}}">
+          <div>
+            <b>Emp/RA</b>
+          </div>
+        </ion-col>
+        <ion-col class="{{Status}}">
+          <div>
+            <b> Venc.</b>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <b>Valor</b>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <b>R. Lanç.</b>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <b>Pagar</b>
+          </div>
+        </ion-col>
+      </ion-row>
+    
+  <!--     <ion-row >
+        <ion-col>
+          <div>
+            <b> 1fe.</b>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <b>feff</b>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <b>fefefefef</b>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <b>fefefe</b>
+          </div>
+        </ion-col>
+      </ion-row> -->
+    </ion-grid>
+
+  </ion-list>
+
+  <ion-item>
+    <ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+              <!-- <ion-list>
+                <ion-item *ngFor="let i = index"> -->
+                  <ion-checkbox color="primary" slot="start"
+                  >
+                  </ion-checkbox>
+               <!--  </ion-item>
+              </ion-list> -->
+             <!--  <ion-checkbox color="primary" slot="start"></ion-checkbox>
+              <ion-checkbox  *ngFor="let extrato of listas"
+              color="primary" slot="start" [(ngModel)]="boletosPagar[i].checked" 
+              (ionChange)="onBoletosPagarChange()">
+            </ion-checkbox> -->
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              456487
+            </div>
+          </ion-col>
+          <ion-col class="d-none d-sm-table-cell">
+            <div>
+              1<br>716396
+            </div>
+          </ion-col>
+          <ion-col class="d-none d-sm-table-cell">
+            <div>
+              22/05/2020
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              235,545
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-icon name="logo-usd"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-icon class="red" name="medical" ></ion-icon>
+              <!-- <ion-icon *ngIf="extrato.Status=='Em Aberto'" class="red" name="medical" (click)="pagarmento(extrato.CodColigada, extrato.CodFilial,
+    extrato.IdBoleto, extrato.CodServicoPrincipal, extrato.Status,
+    extrato.ValorLiquido, extrato.DataVencimento, extrato.Lancamentos)"></ion-icon> -->
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-label>
+  </ion-item>
+
+</ion-content>
